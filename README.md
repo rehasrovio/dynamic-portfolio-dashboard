@@ -33,15 +33,16 @@ A real-time portfolio tracking application built with Next.js that displays live
 3. **Open Browser**
    Navigate to [http://localhost:3000](http://localhost:3000)
 
-## 📊 Portfolio Data Structure
+## 📊 Portfolio Data
 
-The application uses sample portfolio data with the following stocks:
+The application includes a comprehensive sample portfolio with 29 stocks across 6 sectors:
 
-- **Reliance Industries** (Energy sector)
-- **TCS** (Technology sector)  
-- **HDFC Bank** (Banking sector)
-- **Infosys** (Technology sector)
-- **ITC** (FMCG sector)
+- **Financial Sector**: HDFC Bank, Bajaj Finance, ICICI Bank, Axis Bank, SBI Life
+- **Tech Sector**: LTI Mindtree, KPIT Tech, Tata Tech, Wipro, Tech Mahindra, Infosys, Happiest Mind, Zomato
+- **Consumer Sector**: Dmart, Tata Consumer, Pidilite
+- **Power Sector**: Tata Power, KPI Green, Suzlon, Gensol
+- **Pipe Sector**: Jindal Steel, Astral, Polycab
+- **Others**: Asian Paints, Deepak Nitrite, Fine Organic, Gravita
 
 ## 🏗️ Architecture
 
@@ -115,6 +116,8 @@ The dashboard is fully responsive and works seamlessly across:
 ```
 src/
 ├── app/                 # Next.js app directory
+│   ├── api/            # API routes
+│   │   └── stocks/     # Stock data endpoint
 │   ├── layout.tsx      # Root layout
 │   ├── page.tsx        # Home page
 │   └── globals.css     # Global styles
@@ -141,8 +144,8 @@ The application can be deployed to any platform that supports Next.js:
 
 - **Vercel** (recommended)
 - **Netlify**
+- **Railway**
 - **AWS**
-- **Docker**
 
 ## 📄 License
 
