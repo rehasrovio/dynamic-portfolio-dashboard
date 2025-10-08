@@ -24,12 +24,18 @@ export async function GET(request: NextRequest) {
           const yahooSymbol = symbol.endsWith('.NS') ? symbol : `${symbol}.NS`;
           const quote = await yahooFinance.quote(yahooSymbol);
           
-          results[symbol] = {
-            symbol: symbol,
-            regularMarketPrice: quote.regularMarketPrice,
-            regularMarketPreviousClose: quote.regularMarketPreviousClose,
-            peRatio: quote.trailingPE,
-          };
+          // Check if quote data exists and has required fields
+          if (quote && typeof quote === 'object') {
+            results[symbol] = {
+              symbol: symbol,
+              regularMarketPrice: quote.regularMarketPrice || null,
+              regularMarketPreviousClose: quote.regularMarketPreviousClose || null,
+              peRatio: quote.trailingPE || null,
+            };
+          } else {
+            console.warn(`No valid quote data for ${symbol}`);
+            results[symbol] = null;
+          }
         } catch (error) {
           console.error(`Error fetching quote for ${symbol}:`, error);
           results[symbol] = null;
