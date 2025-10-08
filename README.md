@@ -1,36 +1,153 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🧭 Dynamic Portfolio Dashboard
 
-## Getting Started
+A real-time portfolio tracking application built with Next.js that displays live stock prices, portfolio metrics, and sector-wise performance analysis.
 
-First, run the development server:
+## ✨ Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Real-time Stock Data**: Fetches live stock prices from Yahoo Finance every 15 seconds
+- **Portfolio Metrics**: Displays investment, present value, gain/loss calculations
+- **Sector-wise Analysis**: Groups holdings by sector with aggregated performance
+- **Interactive Table**: Sortable and responsive portfolio table
+- **Visual Indicators**: Color-coded gains (green) and losses (red)
+- **Error Handling**: Graceful handling of API failures with user-friendly messages
+
+## 🚀 Quick Start
+
+### Prerequisites
+
+- Node.js 18+ 
+- npm or yarn
+
+### Installation
+
+1. **Install Dependencies**
+   ```bash
+   npm install @tanstack/react-table yahoo-finance2 axios --legacy-peer-deps
+   ```
+
+2. **Start Development Server**
+   ```bash
+   npm run dev
+   ```
+
+3. **Open Browser**
+   Navigate to [http://localhost:3000](http://localhost:3000)
+
+## 📊 Portfolio Data Structure
+
+The application uses sample portfolio data with the following stocks:
+
+- **Reliance Industries** (Energy sector)
+- **TCS** (Technology sector)  
+- **HDFC Bank** (Banking sector)
+- **Infosys** (Technology sector)
+- **ITC** (FMCG sector)
+
+## 🏗️ Architecture
+
+### Components
+
+- **`PortfolioTable`**: Main table component with real-time updates
+- **`SectorSummary`**: Sector-wise performance breakdown
+- **`Home`**: Main page component orchestrating the dashboard
+
+### Services
+
+- **`YahooFinanceService`**: Handles API calls to Yahoo Finance with caching and rate limiting
+- **`PortfolioCalculations`**: Utility functions for portfolio metrics calculations
+
+### Data Models
+
+- **`Stock`**: Individual stock holding interface
+- **`PortfolioMetrics`**: Aggregated portfolio performance
+- **`SectorSummary`**: Sector-wise performance data
+
+## 🔧 Technical Implementation
+
+### Real-time Updates
+
+- Uses `setInterval` to refresh stock data every 15 seconds
+- Implements caching to avoid excessive API calls
+- Batch processing with rate limiting to respect API limits
+
+### Performance Optimizations
+
+- **Memoization**: Uses `useMemo` for expensive calculations
+- **Caching**: 30-second cache for Yahoo Finance data
+- **Batch Requests**: Processes multiple stocks in batches of 5
+
+### Error Handling
+
+- Graceful API failure handling
+- User-friendly error messages
+- Fallback to cached data when available
+
+## 📱 Responsive Design
+
+The dashboard is fully responsive and works seamlessly across:
+- Desktop computers
+- Tablets
+- Mobile devices
+
+## ⚠️ Important Notes
+
+### API Limitations
+
+- Yahoo Finance doesn't have an official API
+- Uses `yahoo-finance2` library for data fetching
+- Implements rate limiting to avoid blocking
+
+### Data Accuracy
+
+- Stock prices may have slight delays
+- P/E ratios and earnings data depend on Yahoo Finance availability
+- Includes disclaimer about data accuracy
+
+### Security
+
+- All API operations are handled server-side
+- No sensitive data exposed to client-side
+
+## 🛠️ Development
+
+### Project Structure
+
+```
+src/
+├── app/                 # Next.js app directory
+│   ├── layout.tsx      # Root layout
+│   ├── page.tsx        # Home page
+│   └── globals.css     # Global styles
+├── components/         # React components
+│   ├── PortfolioTable.tsx
+│   └── SectorSummary.tsx
+├── lib/               # Utility libraries
+│   ├── yahoo-finance.ts
+│   └── portfolio-calculations.ts
+└── types/             # TypeScript interfaces
+    └── portfolio.ts
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Available Scripts
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🚀 Deployment
 
-## Learn More
+The application can be deployed to any platform that supports Next.js:
 
-To learn more about Next.js, take a look at the following resources:
+- **Vercel** (recommended)
+- **Netlify**
+- **AWS**
+- **Docker**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📄 License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+© 2025 Octa Byte AI Pvt Ltd
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**Disclaimer**: This is a demo application for educational purposes. Stock prices may be delayed and should not be used for actual trading decisions.
