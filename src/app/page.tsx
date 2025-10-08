@@ -24,10 +24,6 @@ export default function Home() {
           <p className="mt-2 text-gray-600">
             Real-time portfolio tracking with live stock prices and sector-wise performance
           </p>
-          <div className="mt-2 text-sm text-orange-600">
-            ⚠️ <strong>Note:</strong> Stock prices only update during market hours (9:15 AM - 3:30 PM IST). 
-            Outside market hours, you&apos;ll see the last closing prices.
-          </div>
         </div>
 
         {/* Portfolio Table */}
