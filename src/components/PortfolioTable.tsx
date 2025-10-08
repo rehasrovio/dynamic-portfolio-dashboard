@@ -184,7 +184,7 @@ export default function PortfolioTable({
     } finally {
       setIsLoading(false);
     }
-  }, [stocks, onStocksUpdate]);
+  }, []); // Remove dependencies to prevent infinite loops
 
   useEffect(() => {
     // Initial fetch
@@ -194,7 +194,7 @@ export default function PortfolioTable({
     const interval = setInterval(fetchStockData, 15000);
 
     return () => clearInterval(interval);
-  }, [fetchStockData]);
+  }, []); // Empty dependency array - only run once on mount
 
   return (
     <div className="space-y-6">
