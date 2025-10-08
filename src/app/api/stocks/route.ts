@@ -1,6 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
 import yahooFinance from 'yahoo-finance2';
 
+interface YahooFinanceQuote {
+  symbol: string;
+  regularMarketPrice?: number | null;
+  regularMarketPreviousClose?: number | null;
+  peRatio?: number | null;
+}
+
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const symbols = searchParams.get('symbols');
@@ -11,7 +18,7 @@ export async function GET(request: NextRequest) {
 
   try {
     const symbolList = symbols.split(',');
-    const results: Record<string, any> = {};
+    const results: Record<string, YahooFinanceQuote | null> = {};
 
     // Process symbols in batches to avoid rate limiting
     const batchSize = 5;
