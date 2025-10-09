@@ -2,6 +2,12 @@
 
 A real-time portfolio tracking application built with Next.js that displays live stock prices, portfolio metrics, and sector-wise performance analysis.
 
+## 🌐 Live Demo
+
+**🚀 [View Live Application](https://dynamic-portfolio-dashboard-six.vercel.app/)**
+
+Experience the dashboard in action with real-time stock data updates every 15 seconds.
+
 ## ✨ Features
 
 - **Real-time Stock Data**: Fetches live stock prices from Yahoo Finance every 15 seconds
